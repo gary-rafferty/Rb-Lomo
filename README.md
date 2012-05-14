@@ -48,9 +48,15 @@ client.popular_film_photos(871911028).last
 
 client.recent_film_photos(871911028).last
 
-## Todo
+## Testing
 
-Write some tests,.... preferable using MiniTest.
+I've wrote up some tests using MiniTest.
+Currently, you need to stick your API key into each test class as a
+request is made to the api each time.
+This could probably be mocked but I tend to prefer making the actual
+request if its only for a small amount of times.
+
+## Todo
 
 Build a sample application to show the gem usage.
 
