@@ -19,23 +19,6 @@ module Rb
         @api_key = api_key
       end
 
-      def data_from url, type='photos'
-        resp = RestClient.get("#{API_BASE}/#{url}", params: { api_key: @api_key})
-        json = JSON.parse resp
-
-        retval = []
-        case type
-        when 'photos'
-          json['photos'].each {|p| retval << Photo.new(p)}
-        when 'cameras'
-          json['cameras'].each {|c| retval << Camera.new(c)}
-        when 'films'
-          json['films'].each {|f| retval << Film.new(f)}
-        end
-
-        retval
-      end
-
       def popular_photos
         data_from '/photos/popular'
       end
@@ -74,6 +57,25 @@ module Rb
 
       def recent_film_photos id
         data_from "/films/#{id}/photos/recent"
+      end
+
+      private
+
+      def data_from url, type='photos'
+        resp = RestClient.get("#{API_BASE}/#{url}", params: { api_key: @api_key})
+        json = JSON.parse resp
+
+        retval = []
+        case type
+        when 'photos'
+          json['photos'].each {|p| retval << Photo.new(p)}
+        when 'cameras'
+          json['cameras'].each {|c| retval << Camera.new(c)}
+        when 'films'
+          json['films'].each {|f| retval << Film.new(f)}
+        end
+
+        retval
       end
     end
   end
