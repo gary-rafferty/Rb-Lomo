@@ -21,13 +21,16 @@ Or install it yourself as:
 
 ### Instantiate the client using your API-KEY
 
+```ruby
 client = Rb::Lomo::Client.new('YOUR-API-KEY')
+```
 
 Currently, you need to request an API key from Lomography.
 Emailing markus@lomography.com should hook you up with one.
 
 ### Call methods on the client
 
+```ruby
 client.popular_photos.last.user.username
 
 client.popular_photos.last.small_asset_url
@@ -47,6 +50,7 @@ client.films.last
 client.popular_film_photos(871911028).last
 
 client.recent_film_photos(871911028).last
+```
 
 ## Testing
 
